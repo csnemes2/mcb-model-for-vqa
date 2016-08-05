@@ -10,7 +10,7 @@ Thanks to Yunseok Jang, Hyugjin Ko, and [Sangeon Park](https://github.com/pse120
 
 Before Training
 - build_train_datasets.py : build annotations for train(with idx of image feature vector, question, and idx of answer. Also build word2ix and ix2word for questions and answers
-- build_val_datasets.py : build_annotations for valid(with image_id, idx of image feature vector, question, question_id)
+- build_val_datasets.py : build_annotations for valid(with image_id, idx of image feature vector, question, question_id)  
 (Note that codes for building image features and imgid2featid are not provided. Those can be shared wish other MSCOCO tasks.
 
 Models and Train & Test codes
