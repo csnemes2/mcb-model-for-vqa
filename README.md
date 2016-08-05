@@ -5,11 +5,21 @@ This is an implementation of [Multimodal Compact Bilinear Pooling for Visual Que
 A theorical background of this paper is in [mcb_for_vqa.pdf](https://github.com/shmsw25/mcb-model-for-vqa/blob/master/mcb_for_vqa.pdf).  
 Thanks to Yunseok Jang, Hyugjin Ko, and [Sangeon Park](https://github.com/pse1202).  
 
+
 ### Codes
 
-qa_model.py : an implementation of a model
-train.py : a code for training
-CBP : compact bilinear model from [here](https://github.com/therne/compact-bilinear-pooling-tf).
+Before Training
+- build_train_datasets.py : build annotations for train(with idx of image feature vector, question, and idx of answer. Also build word2ix and ix2word for questions and answers
+- build_val_datasets.py : build_annotations for valid(with image_id, idx of image feature vector, question, question_id)
+(Note that codes for building image features and imgid2featid are not provided. Those can be shared wish other MSCOCO tasks.
+
+Models and Train & Test codes
+- qamodel.py : an abstract model for VQA
+- qa_woAtten.py : a model which do not have attention mapping
+- train.py : a code for training
+- test.py : a code for test
+- CBP : compact bilinear model from [here](https://github.com/therne/compact-bilinear-pooling-tf).
+- PythonEvaluationTools : Metric Evaluation Tool for VQA dataset from [here](https://github.com/VT-vision-lab/VQA/).
 
 
 ### Datasets
