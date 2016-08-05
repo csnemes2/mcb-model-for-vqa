@@ -2,7 +2,7 @@
 
 
 This is an implementation of [Multimodal Compact Bilinear Pooling for Visual Question Answering and Visual Groudning](https://arxiv.org/abs/1606.01847).
-A theorical background of this paper is in mcb_for_vqa.pdf.
+A theorical background of this paper is in [mcb_for_vqa.pdf](https://github.com/shmsw25/mcb-model-for-vqa/blob/master/mcb_for_vqa.pdf).
 Thanks to Yunseok Jang, Hyugjin Ko, and [Sangeon Park](https://github.com/pse1202).
 ### Codes
 
