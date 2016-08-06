@@ -15,11 +15,14 @@ Before Training
 (Note that codes for building image features and imgid2featid are not provided. Those can be shared wish other MSCOCO tasks.
 
 Models and Train & Test codes
-- qamodel.py : an abstract model for VQA
-- qa_woAtten.py : a model which do not have attention mapping
+- config.py : configuration file (support model without Attention & with Attention)
+- model
+    - qamodel.py : an abstract model for VQA
+    - qa_woAtten.py : a model which do not have attention mapping
+    - qa_Atten.py : a model which have attention mapping
+    - CBP : compact bilinear model from [here](https://github.com/therne/compact-bilinear-pooling-tf).
 - train.py : a code for training
 - test.py : a code for test
-- CBP : compact bilinear model from [here](https://github.com/therne/compact-bilinear-pooling-tf).
 - PythonEvaluationTools : Metric Evaluation Tool for VQA dataset from [here](https://github.com/VT-vision-lab/VQA/).
 
 
