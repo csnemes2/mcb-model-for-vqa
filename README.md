@@ -8,13 +8,12 @@ Thanks to Yunseok Jang, Hyugjin Ko, and [Sangeon Park](https://github.com/pse120
 
 ### Codes
 
-Before Training
-- build_train_datasets.py : build annotations for train(with idx of image feature vector, question, and idx of answer. Also build word2ix and ix2word for questions and answers
-- build_val_datasets.py : build_annotations for valid(with image_id, idx of image feature vector, question, question_id)  
+Before Training(Caffe is used)
+- build_train_datasets.py : build annotations for train(with idx of image feature vector, question, and idx of answer) and feature vectors. Also build word2ix and ix2word for questions and answers.
+- build_val_datasets.py : build_annotations for valid(with image_id, idx of image feature vector, question, question_id) and feature vectors.
 
-(Note that codes for building image features and imgid2featid are not provided. Those can be shared wish other MSCOCO tasks.
 
-Models and Train & Test codes
+Models and Train & Test codes(Tensorflow is used)
 - config.py : configuration file (support model without Attention & with Attention)
 - model
     - qamodel.py : an abstract model for VQA
@@ -29,7 +28,8 @@ Models and Train & Test codes
 ### Datasets
 
 Datasets are available on [here](http://visualqa.org/download.html). Only Real Images and OpenEnded questions are used.
-
+3 questions for an image, 10 answers per a question.
+**I only used 50000 images and 150000 questions. Split training & validation set with 9 : 1 rate.**
 
 ### You might also want to look at
 
