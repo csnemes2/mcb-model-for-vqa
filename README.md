@@ -30,6 +30,12 @@ Models and Train & Test codes(Tensorflow is used)
 Datasets are available on [here](http://visualqa.org/download.html). Only Real Images and OpenEnded questions are used.
 3 questions for an image, 10 answers per a question.
 **I only used 50000 images and 150000 questions. Split training & validation set with 9 : 1 rate.**
+- In questions, 10525 different words exist and most frequent 5000 words are selected.(threshold 3) In paper, 13K~20K words were selected.
+- In answers, 50697 different words exist and most frequent 5000 words are selected.(threshold 9) In paper, 3000 words were selected.
+- Length of questions
+    - 0~9 : 126520, 10~19 : 8465, 20~29 : 16
+    - Consider only 20 words in front when embedding questions
+- Use answers with confidence 'yes' only : Total 1049879 numbers of (Image, Question, Answer) are used.
 
 ### You might also want to look at
 
