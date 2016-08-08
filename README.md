@@ -16,13 +16,14 @@ Before Training(Caffe is used)
 Models and Train & Test codes(Tensorflow is used)
 - config.py : configuration file (support model without Attention & with Attention)
 - model
-    - qamodel.py : an abstract model for VQA
-    - qa_woAtten.py : a model which do not have attention mapping
-    - qa_Atten.py : a model which have attention mapping
-    - CBP.py : Module for compact bilinear pooling.
+    - vqamodel.py : an abstract model for VQA
+    - mcb_vqamodel.py : a MCB model which do not have attention mapping
+    - mcbAtt_vqamodel.py : a MCB model which have attention mapping
+    - concat_vqamodel.py : a non-bilinear model(Use concatenate to make feature)
+    - CBP : Module for compact bilinear pooling from [here](github.com/therne/compact-bilinear-pooling-tf).
 - train.py : a code for training
 - test.py : a code for test
-- PythonEvaluationTools : Metric Evaluation Tool for VQA dataset from [here](https://github.com/VT-vision-lab/VQA/).
+- vqaEvaluation, vqaTools : Metric Evaluation Tool for VQA dataset from [here](https://github.com/VT-vision-lab/VQA/).
 
 
 ### Datasets
