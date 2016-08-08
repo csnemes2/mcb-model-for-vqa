@@ -19,7 +19,7 @@ Models and Train & Test codes(Tensorflow is used)
     - qamodel.py : an abstract model for VQA
     - qa_woAtten.py : a model which do not have attention mapping
     - qa_Atten.py : a model which have attention mapping
-    - CBP : compact bilinear model from [here](https://github.com/therne/compact-bilinear-pooling-tf).
+    - CBP.py : Module for compact bilinear pooling.
 - train.py : a code for training
 - test.py : a code for test
 - PythonEvaluationTools : Metric Evaluation Tool for VQA dataset from [here](https://github.com/VT-vision-lab/VQA/).
