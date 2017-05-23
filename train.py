@@ -6,12 +6,14 @@ from IPython import embed
 
 def annotation_load(config):
     annotations_result = pickle.load(open(config.annotations_result_path, 'rb'))
+    print('Loading annottation result from '+config.annotations_result_path)
     return annotations_result['image_ids'], np.array(annotations_result['questions']), np.array(annotations_result['answers'])
 
 
 def data_load(config):
     p = re.compile('[\w]+')
     image_ids, questions, answers = annotation_load(config)
+    print(len(image_ids))
     feats = np.load(config.feats_path)
     q_word2ix = pickle.load(open(config.worddic_path+'q_word2ix', 'rb'))
     questions = map(lambda ques :
@@ -20,7 +22,7 @@ def data_load(config):
                 questions)
     questions = np.array(sequence.pad_sequences(
                     questions, padding='post', maxlen=config.n_lstm_steps))
-    #print feats.shape, len(image_ids), len(questions), len(answers)
+    print feats.shape, len(image_ids), len(questions), len(answers)
     return feats, np.array(image_ids), questions, answers
 
 
@@ -62,8 +64,8 @@ def train(config = Config()):
     for epoch in range(config.max_epoch):
         print "Start running epoch %d" % (epoch)
         t = time.time()
-	# In mcbAtt, cannot shuffle because of OOM
-	if not config.config_name == 'mcbAtt':
+        # In mcbAtt, cannot shuffle because of OOM
+        if not config.config_name == 'mcbAtt':
             shuffler = np.random.permutation(config.training_num)
             image_ids = image_ids[shuffler]
             questions = questions[shuffler]

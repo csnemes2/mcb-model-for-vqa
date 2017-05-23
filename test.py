@@ -43,12 +43,14 @@ def test(config=Config(), epoch_list = range(10)):
             n_lstm_steps=config.n_lstm_steps)
 
         sess.run(tf.initialize_all_variables())
-	image_feat, question, max_prob_words = model.solver()
+        image_feat, question, max_prob_words = model.solver()
         saver = tf.train.Saver(max_to_keep = 50)
         saver.restore(sess, config.model_path+'model-%d'%(epoch))
 
         result = []
         for (start, end) in zip(from_idx, to_idx):
+            #print "%d->%d" %(start,end)
+
             # make curr_image_feat [batch_size, feature_dim]
             curr_image_feat = feats[start:end]
             # make curr_question [batch_size, n_lstm_steps]
@@ -107,7 +109,7 @@ def test(config=Config(), epoch_list = range(10)):
                 print wrong[i]
 
         ops.reset_default_graph()
-    	sess.close()
+        sess.close()
 
         if config.dataset_name == 'mscoco':
             json.dump(result, open(config.result_path%(epoch), 'wb'))

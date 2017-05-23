@@ -1,28 +1,9 @@
 import json, operator, re, time, pickle, os
 from cnn import *
 
-training_img_num = 45000
-validation_img_num = 5000
 
-# Caffe model : ResNet
-res_model = '/home/shmsw25/caffe/models/resnet/ResNet-101-model.caffemodel'
-res_deploy = '/home/shmsw25/caffe/models/resnet/ResNet-101-deploy.prototxt'
-
-layer_set = {
-        'default' : {'layers' : 'pool5', 'layer_size' : [2048], 'feat_path' : '/data1/common_datasets/mscoco/features/val_res_feat.npy'},
-        '4b' : {'layers' : 'res4b22_branch2c', 'layer_size' : [1024, 14, 14], 'feat_path' : '/data1/common_datasets/mscoco/features/val_res4b_feat.npy'}
-        }
-
-annotations_path = '/data1/shmsw25/vqa/mscoco_val2014_annotations.json'
-questions_path = '/data1/shmsw25/vqa/OpenEnded_mscoco_val2014_questions.json'
-annotations_result_path = '/data1/shmsw25/vqa/val_annotations_result'
-selected_annotations_path = '/data1/shmsw25/vqa/selected_mscoco_val2014_annotations.json'
-selected_questions_path = '/data1/shmsw25/vqa/selected_OpenEnded_mscoco_val2014_questions.json'
-
-
-image_path = '/data1/common_datasets/mscoco/images/val2014/COCO_val2014_'
-imgix2featix_path = '/data1/shmsw25/vqa/val_img2feat'
-worddic_path = '/data1/shmsw25/vqa/'
+#from train2014_vqa_mybuild1.valconf import *
+from train2014_vqa_mybuild2.valconf import *
 
 
 def create_annotations_result():
@@ -47,7 +28,7 @@ def create_annotations_result():
 		'info' : '', 'task_type' : '', 'data_type' : '',
 		'data_subtype' : '', 'license' : ''},
 		open(selected_questions_path, 'wb'))
-    return
+    #return
 
     image_id_list, question_list, question_id_list, answer_list = [], [], [], []
 
@@ -87,6 +68,9 @@ def create_annotations_result():
     pickle.dump(imgix2featix, open(imgix2featix_path, 'wb'))
 
     cnn = CNN(model=res_model, deploy=res_deploy, width=224, height=224)
+
+
+    print unique_images
 
     for dic in layer_set.values():
 

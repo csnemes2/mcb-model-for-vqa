@@ -3,26 +3,7 @@ import numpy as np
 from IPython import embed
 from cnn import *
 
-training_img_num = 45000
-validation_img_num = 5000
-word_num = 5000
-ans_candi_num = 5000
-
-# Caffe model : ResNet
-res_model = '/home/shmsw25/caffe/models/resnet/ResNet-101-model.caffemodel'
-res_deploy = '/home/shmsw25/caffe/models/resnet/ResNet-101-deploy.prototxt'
-
-layer_set = {
-        'default' : {'layers' : 'pool5', 'layer_size' : [2048], 'feat_path' : '/data1/common_datasets/mscoco/features/train_res_feat.npy'},
-        '4b' : {'layers' : 'res4b22_branch2c', 'layer_size' : [1024, 14, 14], 'feat_path' : '/data1/common_datasets/mscoco/features/train_res4b_feat.npy'}
-        }
-
-annotations_path = '/data1/shmsw25/vqa/mscoco_train2014_annotations.json'
-questions_path = '/data1/shmsw25/vqa/OpenEnded_mscoco_train2014_questions.json'
-annotations_result_path = '/data1/shmsw25/vqa/train_annotations_result'
-worddic_path = '/data1/shmsw25/vqa/'
-image_path = '/data1/common_datasets/mscoco/images/train2014/COCO_train2014_'
-imgix2featix_path = '/data1/shmsw25/vqa/img2feat'
+from train2014_vqa_mybuild2.trainconf import *
 
 
 def create_annotations_result():
@@ -51,6 +32,9 @@ def create_annotations_result():
 
     q_dic, q_word2ix, q_ix2word = {}, {}, {}
     a_dic, a_word2ix, a_ix2word = {}, {}, {}
+
+
+
 
     # (1) create wordtoix, ixtoword for answers
     answer_type_dic = {}
@@ -144,6 +128,7 @@ def create_annotations_result():
     pickle.dump(imgix2featix, open(imgix2featix_path, 'wb'))
 
     cnn = CNN(model=res_model, deploy=res_deploy, width=224, height=224)
+    print "CNN class was created"
     print len(unique_images)
 
     for dic in layer_set.values():
@@ -151,9 +136,9 @@ def create_annotations_result():
         layer_size = dic['layer_size']
         feat_path = dic['feat_path']
         if not os.path.exists(feat_path):
-            feats = cnn.get_features(unique_images,
-                layers=layers, layer_sizes=layer_size)
-	    print feats.shape
+            feats = cnn.get_features(unique_images, layers=layers, layer_sizes=layer_size)
+            print feats.shape
+            #import ipdb;ipdb.set_trace()
             np.save(feat_path, feats)
     print "Success to save features"
 

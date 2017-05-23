@@ -8,9 +8,12 @@ from IPython import embed
 
 def crop_image(x, target_height=227, target_width=227):
     image = skimage.img_as_float(skimage.io.imread(x)).astype(np.float32)
-
+    import ipdb;
+    #ipdb.set_trace()
     if len(image.shape) == 2:
         image = np.tile(image[:,:,None], 3)
+    if len(image.shape) == 3:
+        image = image[:, :, :3]
     elif len(image.shape) == 4:
         image = image[:,:,:,0]
 

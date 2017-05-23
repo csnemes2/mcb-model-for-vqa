@@ -54,11 +54,11 @@ def vqaEval(config = Config(), epoch_list = range(10)):
     return accuracy_dic
 
 if __name__ == '__main__':
-    dic1 = vqaEval(config = Config(config_name = 'concat'))
+    #dic1 = vqaEval(config = Config(config_name = 'concat'))
     dic2 = vqaEval(config = Config(config_name = 'mcb'))
-    print "Concat Results"
-    for epoch in dic1.keys():
-        print epoch, dic1[epoch]
+    #print "Concat Results"
+    #for epoch in dic1.keys():
+    #    print epoch, dic1[epoch]
     print "MCB Results"
     for epoch in dic2.keys():
         print epoch, dic2[epoch]

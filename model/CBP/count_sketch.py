@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-_sketch_op = tf.load_op_library('/data/shmsw25/vqa/model/CBP/build/count_sketch.so')
+_sketch_op = tf.load_op_library('/home/csn/mcb-model-for-vqa/model/CBP/build/count_sketch.so')
 
 def count_sketch(probs, project_size):
     """ Calculates count-min sketch of a tensor.
